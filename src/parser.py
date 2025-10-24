@@ -6,7 +6,7 @@ import re
 import sys
 
 class SilenceAction(argparse.Action):
-    def __call__(self, parser, namespace, thresh):
+    def __call__(self, parser, namespace, thresh, option_string=None):
         try:
             silence_arg = timedelta(seconds=float(thresh))
             setattr(namespace, self.dest, silence_arg)
@@ -28,7 +28,7 @@ class MapAction(argparse.Action):
 def run_merge(args:argparse.Namespace):
     ts = Transcript.parse_transcript(args.filepath)
     result = Transcript()
-    silence_thresh = timedelta(args.silence_thresh)
+    silence_thresh = args.silence_thresh
     if args.merger == 'silence':
         result = ts.merge_by_silence_interval(silence_thresh, ignore_speakers=True)
     else:
@@ -88,7 +88,7 @@ if __name__ == '__main__':
 
     merge = subparsers.add_parser('merge', help='merge transcript lines by speaker or silence between lines.')
     merge.add_argument('--merger', choices=['speaker', 'silence'], default='speaker')
-    merge.add_argument('--silence_thresh', type=float, default=0, nargs=1, help='maximum silence threshold to ignore while merging', action=SilenceAction)
+    merge.add_argument('--silence_thresh', type=float, default=0, help='maximum silence threshold to ignore while merging', action=SilenceAction)
     merge.add_argument('--out', required=False, help='file path to save new transcript into. If not specified, result will be printed instead.', type=Path)
     merge.set_defaults(func=run_merge)
 
