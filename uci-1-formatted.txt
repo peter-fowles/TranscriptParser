@@ -1,0 +1,221 @@
+# Question 1
+
+P2: Oh, okay, there we go. Right. Ascending order. Oh, okay, I see, I see, alright. I understand the problem. Okay, so initially, I'm already, like, seeing, like, you're trying to look for the point where where you have a number that's less than another number, and that will be your rotated index, I guess. I don't know, let's see.
+
+Interviewer: Would you mind just talking me through your, thinking process?
+
+P2: Okay, yeah, yeah, so… Thank you. So I'm basically thinking, like, if you start, so, like, I'll start with what we know. Like, we know that, The point you're looking for is… The first… or is the… is the only instance in the whole array where the number is less than the previous number? Or the directly previous number. And we also know that the last element of the… The last element of the list is gonna be less than the first element of the list. Unless the pivot… unless the pivot's, like, the first one. So, if you were to, like, set… The first search to be, like, the middle element. you could… Then ask it, like. You would ask, is the… Alright, is it bigger than the element before it? And… is it smaller than the element after it? I don't know, that's, that's like a start.
+
+Interviewer: So do you have any, concept of what, like, an initial algorithm design might look like with that?
+
+P2: Okay, so… I'm thinking you… are you, like, you're, like, allowed to, like. ask what, like, the last index, or the last element is, right? Or, like, can you do that?
+
+Interviewer: Yeah, yeah, the function, you can assume it's, like, has the entire… it's given the entire array.
+
+P2: Okay.
+
+Interviewer: Yeah.
+
+P2: So I'm thinking you… Like, save the last element, so… set last to… a, Length of A minus 1. I think. So you set the last to… to that. Then… You start by, like, searching the middle element. So you'd… You'd say, like, middle to… Alright, I guess you'd have to, like, save low, low as zero. Hi… is… The last element. And mid… middle is equal to… The average of low and high. So, you'd start by searching middle, See, I'm gonna call this whole function… Find, rotate. so, okay, you have, you have the middle, if… middle… is less than… Middle, plus one, or… If A of middle is less than A of middle plus 1. Return middle. That… that one's… that's… that part is good, I think. Else… or sorry, it should be greater than… if A of mid is greater than A… okay, yeah, so if you have something that's bigger than the element after it. Or… the smaller element. is… Wait, damn it. Okay, if the middle element's greater than… if the element's greater than the one after it, Or… The one before it is greater than it. Then you just return that element. Else… Okay, I'm thinking then if A of… the middle element… Okay, if A of the middle element is greater than… let me capitalize this… is greater than the last… Oh, okay. So, my routine is, like, that if you have the middle element that's greater than the last, that means you've gone too far already. I guess it doesn't necessarily mean that… There's no time limit, right?
+
+Interviewer: There's, so we have just an hour for the whole interview, and then…
+
+P2: Okay, I won't take the lower swear. Yeah. Okay. Okay… So middle is greater than last. Okay, yeah, so wait, if middle is less than last, that means… gone too far. High… then you set high to mid. I guess for fine rotation set parameters. To, be the… The list, the low… And the high. Or I guess you just need the list. You just need the list.
+
+Interviewer: For recursion, having the low and the high is nice too, but yeah.
+
+P2: Okay, I guess you could, yeah, yeah.
+
+Interviewer: Yeah, since it has to return an index instead of, like, a value.
+
+P2: Oh, right, right, okay. And you set high to mid. You call it… List… Hello. Should I just get rid of this, low, mid? If… And then, if it's greater. That means it's… if it's greater than the last, that means the… Rotate element is still going to be further along, so… You search the second half, or the right half. List. Mid. Hi. I think… I mean, I might be missing something, but I think I'm gonna call it here. I think this is, like, the general idea.
+
+Interviewer: Yeah, so there's, there's just a slight issue in the base case, just because, it having that…
+
+P2: Oh, it might… what if it doesn't find it, you mean?
+
+Interviewer: Or… yeah, because it's like… or… because that… it does guarantee to eventually find it, right? There is eventually that rotation somewhere. The problem is more just that, Returning mid there is, It has a chance of either returning, like in this example array, either returning the 15 or the 1, depending on which side it ends up on.
+
+P2: I see.
+
+Interviewer: Yep.
+
+P2: Oh… Okay, I see. That makes sense, that makes sense. Alright. What do you think of, like, the general, like, way I, like, went about it? Like, was it, like, kind of, like, a roundabout… I don't know.
+
+Interviewer: Yeah, yeah, no, the general way you went about it is great, the recursion looks great, it's just, like, that base case, and then another potential issue is just what if the array is Unsor… it's just… Rotated at the first index? Yeah, basically looking like a sorted array. Or what if the array, is just one element?
+
+P2: I guess you could do, like, a check, bye. Just, like, a very quick check if… The first element. is less… It's less than the last element. You just return… First element. I'm not sure. I think about… I don't know.
+
+Interviewer: Yeah, no, that looks great for the, like, the… basically just rotated at the… at the first item.
+
+P2: Okay.
+
+Interviewer: Yeah, that looks good.
+
+P2: Alright.
+
+Interviewer: And then, yeah, for an array that has just a length of 1, you would have an out-of-bounds error with your current, other base cases.
+
+P2: The bounds here.
+
+Interviewer: Or out of bounds, yeah.
+
+P2: Oh, like, I'd have to do, like, minus 1 here.
+
+Interviewer: No, it's in the, it's in the base case, so it's like.
+
+P2: on the basis.
+
+Interviewer: Yeah, yeah, because having mid and then mid plus one, or A at mid minus 1 and A at mid, those.
+
+P2: Oh, okay.
+
+Interviewer: If the array has only one item in it, then those.
+
+P2: Much about you.
+
+Interviewer: Index, yeah.
+
+P2: Good. Right.
+
+Interviewer: Yep, and then, yeah, and then the last little thing is just a, having it return mid for both of those, cases. Like, the mid… A at mid is greater than mid plus one, or mid minus 1 is greater than… Atmid.
+
+P2: Yeah, you wanted to return mid-1 in this case.
+
+Interviewer: You want it to return, actually in the first one, mid plus one.
+
+P2: Right, right.
+
+Interviewer: Yeah, because the rotation is at the smallest element.
+
+P2: Makes sense. Wait, so would it even be… do you think it would be necessary to check for both of these, or just do one? Because either, I think I've met.
+
+Interviewer: Yeah. Yeah, I don't think it's necessary to check for both of them. Checking just for one is sufficient. It, like, makes it just one step faster to check for both of them, but that's… it's still O , regardless, so…
+
+P2: Okay, gotcha, gotcha. Should I go on to the next one?
+
+Interviewer: Yes, sure.
+
+# Question 2
+
+P2: Okay… Find the starting position, the entire value. Hmm. Okay, this one seems possibly a bit more straightforward. Find. Okay, so I'm thinking you do the same, similar thing with, like, partition. This problem seems, like, a bit more like a binary search, So… I'm guessing… First, you find the element, so… Okay, so if… So if the element you found is the… right element. I guess you'd want a fourth parameter for… element. Okay, so Venice Elements. Then you'd want to search for, like, the first time that element occurs. So… current… I don't know. And mid's greater than zero, so you don't go out of balance. bid minus equals 1. Back to that, I guess, but the… the part where you have to, like, partition it, I guess, is if… the element you found, the… I guess the middle element, it's less than the element. Then you'd want to search on the right side. So, you'd want to do find those… A mid-high element. And then else… Fine pose. 8. Low, mid. Elements… Just to make sure I got that right, list an element… Yeah, if it's… because if it's… less… Then you'd want to search the right-hand side. Okay. But then you'd want a case for if it's not found. So… So if low is equal to high, And… And, A of, like, A of low. It is not equal to the element. You return… Negative 1, because, I mean, it's not there. I think I'm, like, somewhat happy with this, like, I might have missed something here.
+
+Interviewer: Yeah. Overall, it looks pretty good. The… What is the time complexity of this function?
+
+P2: I guess it would be log… I think log n, because every time you, like… Oh, cra- oh, damn, I guess it's… damn, I guess it goes to end because of the part here. Yeah. I see, I see.
+
+Interviewer: Yeah, because if you have an array of, like, all… every item is the element that you're looking for, then you have just turned it into a linear search, right?
+
+P2: Okay. Hold on, I think, I think I could change this up a bit. So you said, okay, set new low… It's a low. Or no, I guess you wouldn't even need that, you just mean, so it's like, okay, once you have the element you find, Tom, instead of doing, like, a linear, like, parse back to, like, find the first instance of it, I'm thinking maybe… You can use binary search on that, too. So… So while… I guess you wouldn't even need 0, you just have low, because it has to be… No, you wouldn't need zero, you wouldn't need zero. New low equals zero. High equals mid. Or new high equals mid. If… Hmm. Okay, if new… new mid is less than element. Okay, so if the only one you find is less… The correct one. Has to be after. Mid, or new… Low equals new mid. If it's greater than… Actually, if it's greater than or equal to, you'd want to check the other side. So yeah, I'll just do this for clarity. New, mid… Is greater than or equal to element. New high equals new mid. And then you'd kind of do this again. Ben, if you find it, if… AM, new, mid. Zero. Alright. if… New mid equals 0. Or… A of Numid. Is different from… Argus, in this case, greater than… Per nous… mid… minus 1. Then you return… Numid. Is this, like, the… is this, like, kind of, like, the general way, like, or…
+
+Interviewer: Yeah, so that's, like, a good way to approach it in a loop. How can you approach this while continuing the recursive approach of the rest of this?
+
+P2: Oh, maybe you could have… Maybe, like, a separate function. late. Hmm. Find first. Alright, So you'd want this cursive case here. Buying first. Something similar here. I think I ha- I think I have some, like, something here, like… is, like, the… Or… yeah, is this, like, is this the way you would do it, or…
+
+Interviewer: Yeah, so if you just get rid of the while statement there.
+
+P2: Oh, I just forgot what that is.
+
+Interviewer: Yeah, then, yeah, this looks great. This is a totally good solution
+
+# Question 3
+
+P2: Suppose your units in the sorted arrays. Right, Okay, this makes sense about why this would always exist, because at some point it has to overtake the other one in order to finish out on top. I'm thinking of, like, a similar approach to the previous ones, like, okay, let's see it. No, no, you want. B, Y. And, would you mind just kind of, explaining out loud a little bit what you're… Yeah, I saw a lot.
+
+Interviewer: Yeah, like, why… or, like, why… specifically, why, the… the reason that always exists makes…
+
+P2: That's next year.
+
+Interviewer: Yeah.
+
+P2: So… Yeah, so if we know that the first element of A is less than the first element of B, but the last element of A is greater than the last element of B, then there has to be, like, some point where Oh, A overtakes B. But, like, if you, like, imagine them as, like, functions on a graph, like, at some point, those lines would have to cross for the other one to end over the other, if it started below. So that makes sense. I'm thinking, like, You kind of do, like, a binary search-esque, like, thing for… For that position, I guess. And do, like, comparisons at each point. I think, zero beforehandle to find low zero. Eyes… And we… wait, and I guess, first, we assume that… They're the same size. Yeah, yeah, but they both have the same size. Okay. Okay, so we know that it has to exist, so we don't need a base case for if it doesn't. Okay, so similar thing. with the previous… Set the middle. Okay, so A… It's less than BMID. Okay, so if… if A's one is still less than B's one, then that means it's still further to come? So you would search the right half. So… Find, position, Mid, high. Hmm. Else… Is it shed. Okay, so… If you were able to find a point where, A's index is greater than B's, then the job is just finding the first part, or the first… Value for which that's true. So I guess… You'd maybe want a similar function? To the previous… Let's see… Find… First. Okay, so now I'm thinking, like, you do, yeah, similar, like, binary search for the first time, Pat. A is less than B. So… Listen… Okay, so this is, like, the turning point here, then you… We'll just return that. You find… wait, where… Yeah. Less than be… Okay, so you'd want to embed itself… Okay, A… okay, the A element is less than the B. But… the one after it isn't… That… Damn, it sucks. Let's see, okay, I'll come back to this part, but… this case…
+
+Interviewer: And just for clarification, do you mean that to be an else-if there?
+
+P2: Oh, yeah.
+
+Interviewer: Or an assignment. Or I guess you can't assign with the greater… er, with equality, but… Right, right. Yeah.
+
+P2: Okay.
+
+Interviewer: Oh, I just mean, like, with the… Yeah, that one, you just changed it, never mind. I have a little bit of lag, yeah.
+
+P2: Oh, I'm just trying to think about my logic here a bit. Okay, so if you're even here in the first place, it means you're here, and A mid is greater than B amid. Hmm… I feel like I'm making this way more complicated than it has to be. I think, yeah, I can just do something with the previous problem. Where… Just gonna, like… Pretend, like, comment this out. Actually, yeah. No, I'm kind of stuck in the same issue. Okay, so you have the case where… There's 3 cases, I think. Okay, all set A is… mid… mid… Okay, A is less than B and A of B plus A of… A plus 1 is less than B plus 1. the nuance… I think that's what I was trying to do here, but, sure, this… But yeah, so you have the three cases, so… because you wouldn't… You wouldn't be in a case where… A is greater than… A is greater than… no, you could, though. I think this one, this is, like, I'm gonna, like, all here for now.
+
+Interviewer: Yeah, so, this is actually a 100%, like, correct solution.
+
+P2: Really?
+
+Interviewer: In fact, just the findFirst function is a 100% correct solution to the entire problem.
+
+P2: Yeah, like, if you just had that as the solution, that's…
+
+Interviewer: Everybody does it, yeah.
+
+P2: I think I was trying to reinvent the wheel on this one now.
+
+Interviewer: Yeah, yeah, so the, one, one bit of, optimization, or not really optimization, but just, like, a coding, change that you could do, is that in that first else if, you don't necessarily need the AND there, just because, if A at mid is less than B at mid, and…
+
+P2: We wouldn't be in a situation where…
+
+Interviewer: Yeah, like, we already know we're in a situation where the next one is also a less than, just because the first case,
+
+P2: Oh my god.
+
+Interviewer: Was it greater than, or was not a greater than?
+
+P2: Russia. Oh…
+
+Interviewer: Yeah, exactly. So it's kind of implied there, but then, yeah, this is a 100% correct solution, like, just that fine-first method.
+
+P2: Okay.
+
+Interviewer: does it. So, yeah.
+
+P2: Wow, okay. Alright, I'm happy with that.
+
+Interviewer: Yeah, so, yeah, did you have any questions about that? Besides that, then?
+
+P2: I think that's all for now, yeah.
+
+Interviewer: Great. In that case, I will just kind of read my closing script off here.
+
+P2: So, thanks again for your participation here.
+
+Interviewer: please don't, discuss any of the problems with your classmates at all, just to preserve the confidentiality of the study. Yeah, and did you have any other questions about the interview, or the problems, or anything else before I close the interview?
+
+P2: Actually, oh yeah, our, like, in the future, like, we have, like, more, like, for different concepts, or, like…
+
+Interviewer: we don't have any, like, currently planned, but, I mean, hopefully in the future, yeah.
+
+P2: Let's go.
+
+Interviewer: I know your professor's Mike Schindler, right? Yeah, I see.
+
+P2: Did you know, do you know him, or, like…
+
+Interviewer: Yeah, yeah, I've met him once. He came to our university last semester, so…
+
+P2: Oh, beautiful.
+
+Interviewer: Yeah, but, yeah, he… he's been open to, like, having… having more of these studies, with you guys in the future, so we'll… we'll see if, like, we have any plans for it, but… Okay. Yeah, right now we're just doing this, kind of binary search study.
+
+P2: Okay. Yeah, hopefully, hopefully I was, like, helpful. I know, like, when I, like, get focused on stuff, I tend to not explain myself.
+
+Interviewer: No, you did great. Yeah, you did good there, so…
+
+P2: Okay, that's good, that's good.
+
+Interviewer: Yep. Yeah, and then, with this, Google Doc, just, don't edit it after the interview either, because I'm going to be using it as part of the script as well, yeah.
+
+P2: Okay.
+
+Interviewer: Yep.
+
+P2: Yeah, well, thank you, thank you very much.
+
+Interviewer: Yeah, thank you. Have a… have a great day, good luck on that exam tomorrow.
+
+P2: Yes, thank you. Alright, let's see.
+
+Interviewer: Yeah, see you around.
